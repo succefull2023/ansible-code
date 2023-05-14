@@ -1,0 +1,15 @@
+---
+- hosts: qaserver
+  become: yes
+  ignore_errors: yes
+  tasks:
+    - name: Insatall package
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - wget
+        - unzip
+        - httpd
+    - name: download  
+      shell:
